@@ -54,9 +54,9 @@ public class MovieController {
 		
 		List<UserReview> userReviewList = reviewService.getReviewByIdTitle(id);
 		if(userReviewList.size()==0) {
-			userReview.setContent("There's no user review for this movie");
+			userReview.setContent("No user review with evaluation bigger or equal to five find in the datasource.");
 			userReview.setRate(BigDecimal.valueOf(0.0));
-			userReview.setUsername("U");
+			userReview.setUsername("");
 			
 		}else {
 			userReview = userReviewList.get(0);
