@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}"
+	th:with="link=@{/overflix/home}">
+
+
+
+<html>
+<div layout:fragment="content">
+	<main>
+	<div class="filme-principal">
+		<div class="container">
+			<h3 class="titulo">DISASTER MOVIE</h3>
+			<p class="descricao">During one night a group of young people
+				find themselves invaded by a series of natural disasters and
+				catastrophic events.</p>
+			<div class="botoes">
+				<button role="button" class="botao">
+					<i class="fas fa-play"></i> PLAY
+				</button>
+
+			</div>
+		</div>
+	</div>
+	</main>
+
+
+
+	<!-- <div class="carrosel-filmes">
+		<div class="owl-carousel owl-theme">
+			<div class="item" th:each="image : ${lista}">
+				<img class="box-filme" th:src="${image}" />
+			</div>
+		</div>
+
+	</div>-->
+	
+	<div class="carrosel-filmes">
+        <div class="owl-carousel owl-theme">
+            <div class="item" th:each="image : ${lista}">
+            
+				<a th:href="@{/overflix/info/} + ${image.idTitle}"><img class="box-filme" th:src="${image.poster}" /></a>
+				</div>
+          </div>
+
+    </div>
+
+</div>
+
+
+
+</html>

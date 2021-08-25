@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org" layout:decorate="~{layout}"
+	th:with="link=@{/overflix/info}">
+
+
+
+<div layout:fragment="content">
+
+
+ <input type="button" class="botao" value="Voltar" th:onclick="'location.href=\''+ @{/overflix/home} + '\';'"/>
+  <table>
+  <div class="container-info">
+
+   <tr><td><img  class="img.movie" width="300px" height="500px" th:src="${image.poster}"/></td>
+   <div class="text-info">
+   	 <td><h3 class="titulo" th:text="${movie.name}"></h3>
+		 <label><b>Rate:</b></label><p class="text-content" th:text="${movie.rate}"> </p>
+		 <label><b>Director(s):</b><p class="text-content" th:text="${movie.directors}"> </p>
+		 <label><b>Main cast:</b><p class="text-content" th:text="${movie.mainCast}"> </p><br><br><br>
+		 
+		 <label><b>username:</b><p class="text-content" th:text="${userReview.username}"></p>
+		 <label><b>Content:</b><p class="text-content" th:text="${userReview.content}"</p><br>
+		 <label><b>User rate:</b> <p class="text-content" th:text="${userReview.rate}"></p></tr>
+	</div></div>
+	</table>
+		        	
+ </div>
+
+	
+
+</div>
+</html>
