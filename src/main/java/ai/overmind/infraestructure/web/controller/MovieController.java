@@ -1,5 +1,6 @@
 package ai.overmind.infraestructure.web.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.websocket.server.PathParam;
@@ -52,8 +53,15 @@ public class MovieController {
 		image = imageService.getImageByIdTitle(id);
 		
 		List<UserReview> userReviewList = reviewService.getReviewByIdTitle(id);
-		
-		userReview = userReviewList.get(0);
+		if(userReviewList.size()==0) {
+			userReview.setContent("There's no user review for this movie");
+			userReview.setRate(BigDecimal.valueOf(0.0));
+			userReview.setUsername("U");
+			
+		}else {
+			userReview = userReviewList.get(0);
+
+		}
 		
 		
 		model.addAttribute("userReview", userReview);
