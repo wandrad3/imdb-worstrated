@@ -40,7 +40,7 @@ public class UserReview implements Serializable{
 	@Column(name="content", nullable=false, length=1000)
 	private String content;
 	
-	private Movie movie;
+
 	
 	
 }
