@@ -32,7 +32,6 @@ public class Image implements Serializable {
 	
 	private String fanArt;
 	
-	private Movie movie;
 	
 	
 	
