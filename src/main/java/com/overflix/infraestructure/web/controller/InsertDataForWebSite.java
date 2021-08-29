@@ -3,6 +3,7 @@ package com.overflix.infraestructure.web.controller;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -40,19 +41,25 @@ public class InsertDataForWebSite {
 	@Autowired
 	private ReviewService reviewService;
 
-	//tt0808240
+	// tt0808240
 	@EventListener
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
-		String[] movieID = { "tt0362165", "tt0417056", "tt0317676", "tt0804492", "tt1316037", "tt4009460","tt10888594","tt0060666", "tt0799949", "tt1213644" };
+		String[] movieID = { "tt0362165", "tt0417056", "tt0317676", "tt0804492", "tt1316037", "tt4009460", "tt10888594",
+				"tt0060666", "tt0799949", "tt1213644" };
 
-		for (int i = 0; i < movieID.length; i++) {
+		List<Movie> obj = movieService.getAllMovies();
 
-			insertMovie(movieID[i]);
-			//insertMovie("tt10888594");
+		
+			for (int i = 0; i < movieID.length; i++) {
+				if (obj.size() < 10) {
+					
+				insertMovie(movieID[i]);
+			}else {
+				break;
+			}
+
 		}
-		
-		
 
 	}
 
@@ -91,14 +98,14 @@ public class InsertDataForWebSite {
 		List<UserReview> userReviewList = new ArrayList<>();
 
 		for (int i = 0; i < itemReviews.size(); i++) {
-			
-			if(Double.valueOf(itemReviews.get(i).getAuthorRating())>=5) {
+
+			if (Double.valueOf(itemReviews.get(i).getAuthorRating()) >= 5) {
 				UserReview userReview = new UserReview();
 				userReview.setIdTitle(movies.getBody().getImdbID());
 				userReview.setTitle(movies.getBody().getTitle());
 				userReview.setRate(BigDecimal.valueOf(Double.valueOf(itemReviews.get(i).getAuthorRating())));
 				userReview.setUsername(itemReviews.get(i).getAuthor().getDisplayName());
-				userReview.setContent(itemReviews.get(i).getReviewText().substring(0,249));
+				userReview.setContent(itemReviews.get(i).getReviewText().substring(0, 249));
 
 				userReviewList.add(userReview);
 				reviewService.insert(userReview);
@@ -107,18 +114,13 @@ public class InsertDataForWebSite {
 				userReview.setRate(null);
 				userReview.setUsername("");
 				userReview.setContent("");
-				
-				
-				
-				
+
 			}
-			
-			
+
 		}
-		
 
 		movie.setReviews(userReviewList);
-		
+
 		userReviewList.clear();
 
 		// O ImageElement pode se transformar em Image das Entities
@@ -151,10 +153,9 @@ public class InsertDataForWebSite {
 
 		movie.setYear(movies.getBody().getYear());
 		movie.setRate(BigDecimal.valueOf(Double.valueOf(movies.getBody().getImdbRating())));
-		
+
 		movieService.insertMovie(movie);
-		
-		
+
 	}
 
 	private ResponseEntity<ApiImage> getImages(String uri, HttpEntity<String> entityImage) {
