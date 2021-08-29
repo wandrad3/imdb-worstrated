@@ -41,9 +41,10 @@ public class InsertDataForWebSite {
 
 	@Autowired
 	private ReviewService reviewService;
-	
+
 	@Autowired
-	private MovieRepository movieRepository;
+	MovieRepository movieRepository;
+
 	// tt0808240
 	@EventListener
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -51,17 +52,14 @@ public class InsertDataForWebSite {
 		String[] movieID = { "tt0362165", "tt0417056", "tt0317676", "tt0804492", "tt1316037", "tt4009460", "tt10888594",
 				"tt0060666", "tt0799949", "tt1213644" };
 
-		Optional<Movie> obj = Optional.of(movieService.getMovieByIdTitle("tt1213644"));
+		int i = 0;
+		while (!movieRepository.existsById(10L)) {
 
-		int i=0;
-		
-		while(obj.isEmpty()) {
-			System.out.println(obj.isEmpty());				
 			insertMovie(movieID[i]);
+
 			i++;
 		}
-		
-		
+
 
 	}
 
