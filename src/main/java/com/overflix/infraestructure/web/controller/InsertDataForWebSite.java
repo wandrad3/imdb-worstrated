@@ -48,11 +48,11 @@ public class InsertDataForWebSite {
 		String[] movieID = { "tt0362165", "tt0417056", "tt0317676", "tt0804492", "tt1316037", "tt4009460", "tt10888594",
 				"tt0060666", "tt0799949", "tt1213644" };
 
-		List<Movie> obj = movieService.getAllMovies();
+		Optional<Movie> obj = Optional.ofNullable(movieService.getMovieByIdTitle("tt1213644"));
 
 		
 			for (int i = 0; i < movieID.length; i++) {
-				if (obj.size() < 10) {
+				if (obj.isEmpty()) {
 					
 				insertMovie(movieID[i]);
 			}else {
