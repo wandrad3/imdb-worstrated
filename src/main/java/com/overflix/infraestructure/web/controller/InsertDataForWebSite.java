@@ -26,6 +26,7 @@ import com.overflix.mappedIMDB.ApiImage;
 import com.overflix.mappedIMDB.Movies;
 import com.overflix.mappedIMDB.Review;
 import com.overflix.mappedIMDB.Reviews;
+import com.overflix.repositories.MovieRepository;
 import com.overflix.services.ImageService;
 import com.overflix.services.MovieService;
 import com.overflix.services.ReviewService;
@@ -40,7 +41,9 @@ public class InsertDataForWebSite {
 
 	@Autowired
 	private ReviewService reviewService;
-
+	
+	@Autowired
+	private MovieRepository movieRepository;
 	// tt0808240
 	@EventListener
 	public void onApplicationEvent(ContextRefreshedEvent event) {
@@ -48,18 +51,17 @@ public class InsertDataForWebSite {
 		String[] movieID = { "tt0362165", "tt0417056", "tt0317676", "tt0804492", "tt1316037", "tt4009460", "tt10888594",
 				"tt0060666", "tt0799949", "tt1213644" };
 
-		Optional<Movie> obj = Optional.ofNullable(movieService.getMovieByIdTitle("tt1213644"));
+		Optional<Movie> obj = Optional.of(movieService.getMovieByIdTitle("tt1213644"));
 
+		int i=0;
 		
-			for (int i = 0; i < movieID.length; i++) {
-				if (obj.isEmpty()) {
-					
-				insertMovie(movieID[i]);
-			}else {
-				break;
-			}
-
+		while(obj.isEmpty()) {
+			System.out.println(obj.isEmpty());				
+			insertMovie(movieID[i]);
+			i++;
 		}
+		
+		
 
 	}
 
