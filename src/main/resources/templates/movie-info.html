@@ -23,9 +23,10 @@
 		 
 		 <label><b>User rate:</b> <p class="text-content" th:text="${userReview.rate}"></p>
 	</div>
+	
+		 <input type="button" class="botao" value="Voltar" th:onclick="'location.href=\''+ @{/overflix/home} + '\';'"/>
+	
  </div>
 
-	 <input type="button" class="botao" value="Voltar" th:onclick="'location.href=\''+ @{/overflix/home} + '\';'"/>
 
-</div>
 </html>
