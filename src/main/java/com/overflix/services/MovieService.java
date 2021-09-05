@@ -12,19 +12,14 @@ import org.springframework.transaction.annotation.Transactional;
 import com.overflix.entities.Movie;
 import com.overflix.exceptions.DataBaseException;
 import com.overflix.exceptions.ResourceNotFoundException;
-import com.overflix.repositories.ImageRepository;
 import com.overflix.repositories.MovieRepository;
-import com.overflix.repositories.ReviewRepository;
 
 @Service
 public class MovieService {
 
 	@Autowired
 	private MovieRepository movieRepository;
-	@Autowired
-	private ImageRepository imageRepository;
-	@Autowired
-	private ReviewRepository reviewRepository;
+	
 
 	public List<Movie> getAllMovies() {
 		return movieRepository.findAll();
@@ -66,19 +61,3 @@ public class MovieService {
 	
 
 }
-
-/*
- * @Transactional public JornadaTrabalho update(Long id, JornadaTrabalho
- * jornadaTrabalho) {
- * 
- * try {
- * 
- * JornadaTrabalho entity = jornadaTrabalhoRepository.getOne(id);
- * copyDtoToEntity(jornadaTrabalho, entity); entity =
- * jornadaTrabalhoRepository.save(entity); return entity;
- * 
- * } catch (EntityNotFoundException e) { throw new
- * ResourceNotFoundException("Id not found " + id); }
- * 
- * }
- */

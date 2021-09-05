@@ -3,7 +3,6 @@ package com.overflix.infraestructure.web.controller;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -45,7 +44,7 @@ public class InsertDataForWebSite {
 	@Autowired
 	MovieRepository movieRepository;
 
-	// tt0808240
+
 	@EventListener
 	public void onApplicationEvent(ContextRefreshedEvent event) {
 
@@ -67,7 +66,6 @@ public class InsertDataForWebSite {
 		System.out.println("MOVIEID" + movieId);
 		Gson gson = new Gson();
 		Movie movie = new Movie();
-		//// O movies pode ser Transformado em Movie entity
 		HttpHeaders headerMovie = new HttpHeaders();
 		headerMovie.set("x-rapidapi-host", "movies-tvshows-data-imdb.p.rapidapi.com");
 		headerMovie.set("x-rapidapi-key", "a27bec7244msh7c8ba957f876552p199655jsn1c3c7bd24d29");
@@ -86,7 +84,6 @@ public class InsertDataForWebSite {
 		headerReview.set("x-rapidapi-host", "imdb8.p.rapidapi.com");
 		headerReview.set("x-rapidapi-key", "a27bec7244msh7c8ba957f876552p199655jsn1c3c7bd24d29");
 
-		// itemReviews.get(1).getAuthorRating()
 		HttpEntity<String> entityReview = new HttpEntity<>(headerReview);
 		ResponseEntity<Reviews> getReview = getReviews(
 				"https://imdb8.p.rapidapi.com/title/get-user-reviews?tconst=" + movieId, entityReview);
@@ -123,7 +120,6 @@ public class InsertDataForWebSite {
 
 		userReviewList.clear();
 
-		// O ImageElement pode se transformar em Image das Entities
 		HttpHeaders headerImages = new HttpHeaders();
 		headerImages.set("x-rapidapi-host", "movies-tvshows-data-imdb.p.rapidapi.com");
 		headerImages.set("x-rapidapi-key", "a27bec7244msh7c8ba957f876552p199655jsn1c3c7bd24d29");
@@ -138,9 +134,7 @@ public class InsertDataForWebSite {
 		};
 		ApiImage imageElement = gson.fromJson(jsonImages, ttImage.getType());
 
-		// imageElement.get(1);
 
-		// List<Image> imageList = new ArrayList<>();
 
 		Image image = new Image();
 		image.setIdTitle(movies.getBody().getImdbID());
