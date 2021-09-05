@@ -114,8 +114,23 @@
  }
 
 
+.movie-info{
+	
+     align-items: center;
+     
+
+}
+
+.titulo-info{
+	padding: 10px;
+	font-size: 40px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	
+}
+
+
 .container-info{
- display: flex;
+	text-align: center;
 
 
 }
@@ -127,3 +142,4 @@
 	font-size: 16px;
 
 }
+
