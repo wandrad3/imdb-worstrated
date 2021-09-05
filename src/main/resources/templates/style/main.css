@@ -114,31 +114,19 @@
  }
 
 
-.movie-info{
-	
-     text-align: center;
-     
-
-}
-
 .titulo-info{
-	padding: 10px;
+	padding: 20px;
 	font-size: 40px;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 	
 }
 
 
-.container-info{
-	text-align: center;
-
-
-}
 
 .text-content{
  
    margin-left: 15px;
-	
+	text-align: center;
 	font-size: 16px;
 
 }
