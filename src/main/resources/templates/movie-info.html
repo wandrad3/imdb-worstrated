@@ -8,29 +8,24 @@
 <div layout:fragment="content">
 
 
- <input type="button" class="botao" value="Voltar" th:onclick="'location.href=\''+ @{/overflix/home} + '\';'"/>
+
   
   <div class="container-info">
-
-
-   
    	<h3 class="titulo-info" th:text="${movie.name}"></h3>
-	 <img  class="img.movie" width="300px" height="500px" th:src="${image.poster}"/>
+	 <img  class="img.movie" width="300px" height="500px" th:src="${image.poster}"/><br>
 		 <label><b>Rate:</b></label><p class="text-content" th:text="${movie.rate}"> </p>
 		 <label><b>Director(s):</b></label><p class="text-content" th:text="${movie.directors}"> </p>
 		 <label><b>Main cast:</b></label><p class="text-content" th:text="${movie.mainCast}"> </p><br><br>
-		 <label class="titulo-info">User Review</label>
-		 <h3  class="titulo-info"><b>username:</b></h3><br>
+		 <h3  class="titulo-info">User Review</h3>
+		 <label><b>username:</b></label>
 		 <p class="text-content" th:text="${userReview.username}"></p>
 		 <label><b>Content:</b></label><p class="text-content" th:text="${userReview.content}"</p><br>	
 		 
 		 <label><b>User rate:</b> <p class="text-content" th:text="${userReview.rate}"></p>
 	</div>
-	
-		        	
  </div>
 
-	
+	 <input type="button" class="botao" value="Voltar" th:onclick="'location.href=\''+ @{/overflix/home} + '\';'"/>
 
 </div>
 </html>
