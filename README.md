@@ -1,4 +1,4 @@
-# imdb-worstrated
+# imdb-worstrated 🎥 
 List of 10 worst rated movies in IMDB. 
 
 site: http://overflix.herokuapp.com/overflix/home
